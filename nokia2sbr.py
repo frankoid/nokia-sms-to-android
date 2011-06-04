@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Copyright Francis Devereux 2011
 
 """Converts SMS message data from Nokia PC Suite CSV format to SMS Backup and
 Restore for Android (by Ritesh Sahu)
