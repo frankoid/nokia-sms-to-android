@@ -28,6 +28,11 @@ class SMS:
       elif csv_row[1] == 'submit':
           self.direction = 'sent'
           self.other_party = csv_row[3]
+      else:
+          print 'Unknown direction %s in row %s' % (csv_row[1], csv_row)
+          self.valid = False
+          return
+      
       self.java_time = nok_time_to_java_time(csv_row[5])
       self.body = csv_row[7]
 
