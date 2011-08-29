@@ -28,6 +28,12 @@ class SMS:
       elif csv_row[1] == 'submit':
           self.direction = 'sent'
           self.other_party = csv_row[3]
+      elif 'SENT' in csv_row[1] or 'sent' in csv_row[1]:
+          self.direction = 'sent'
+          self.other_party = csv_row[3]
+      elif 'RECEIVED' in csv_row[1] or 'received' in csv_row[1]:
+          self.direction = 'received'
+          self.other_party = csv_row[2]
       self.java_time = nok_time_to_java_time(csv_row[5])
       self.body = csv_row[7]
 
