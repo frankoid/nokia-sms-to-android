@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # Copyright Francis Devereux 2011
+from __future__ import with_statement
 
 """Converts SMS message data from Nokia PC Suite CSV format to SMS Backup and
 Restore for Android (by Ritesh Sahu)
@@ -28,17 +29,23 @@ class SMS:
       elif csv_row[1] == 'submit':
           self.direction = 'sent'
           self.other_party = csv_row[3]
+      elif 'SENT' in csv_row[1] or 'sent' in csv_row[1]:
+          self.direction = 'sent'
+          self.other_party = csv_row[3]
+      elif 'RECEIVED' in csv_row[1] or 'received' in csv_row[1]:
+          self.direction = 'received'
+          self.other_party = csv_row[2]
       else:
           print 'Unknown direction %s in row %s' % (csv_row[1], csv_row)
           self.valid = False
           return
-      
+
       self.java_time = nok_time_to_java_time(csv_row[5])
       self.body = csv_row[7]
 
     def populate_sbr_element(self, sms_el):
         sms_el.setAttribute('address', self.other_party)
-        sms_el.setAttribute('date', '%d' % self.java_time)
+        sms_el.setAttribute('date', '%d' % int(self.java_time))
         if self.direction == 'received':
             t = '1'
         else:
