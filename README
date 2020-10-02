@@ -2,6 +2,6 @@ Nokia SMS to Android, Copyright Francis Devereux 2011.
 
 nokia2sbr.py converts SMS message data from Nokia PC Suite or Ovi Suite CSV format to SMS Backup and Restore for Android (by Ritesh Sahu).
 
-It's useful for transferring SMSes from Nokia phones to Android phones.
+It's useful for transferring SMSes from Nokia phones to Android phones. You can transfer any messages from old nokia cellphone to an android smartphone.
 
 Usage: ./nokia2sbr.py nokia_smses_in.csv sms_backup_restore_out.xml
